@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>Paperless-GPT</Name>
+  <Repository>icereed/paperless-gpt:latest</Repository>
+  <Registry>https://hub.docker.com/r/icereed/paperless-gpt</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/icereed/paperless-gpt/issues</Support>
+  <Project>https://github.com/icereed/paperless-gpt</Project>
+  <Overview>paperless-gpt seamlessly pairs with paperless-ngx to generate AI-powered document titles and tags, saving you hours of manual sorting. While other tools may offer AI chat features, paperless-gpt stands out by supercharging OCR with LLMs-ensuring high accuracy, even with tricky scans. If you&#x2019;re craving next-level text extraction and effortless document organization, this is your solution.&#xD;
+Description of container variables: https://github.com/icereed/paperless-gpt?tab=readme-ov-file#configuration</Overview>
+  <Category>AI: Cloud: Productivity: Other:</Category>
+  <WebUI>http://[IP]:[PORT:8080]</WebUI>
+  <TemplateURL/>
+  <Icon>https://raw.githubusercontent.com/MorgothRB/Unraid-Templates/refs/heads/main/paperless-gpt/paperless-gpt.png</Icon>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled>1742902764</DateInstalled>
+  <DonateText/>
+  <DonateLink/>
+  <Requires>paperless-ngx&#xD;
+local ollama or AI cloud service (OpenAI, Google Document AI, Azure Document Intelligence)</Requires>
+  <Config Name="Web UI Port" Target="8080" Default="8080" Mode="tcp" Description="" Type="Port" Display="always" Required="true" Mask="false">8080</Config>
+  <Config Name="Prompt Templates" Target="/app/prompts" Default="/mnt/user/appdata/paperless-gpt/prompts" Mode="rw" Description="Custom Prompt Templates&#13;&#10;https://github.com/icereed/paperless-gpt?tab=readme-ov-file#custom-prompt-templates" Type="Path" Display="always" Required="true" Mask="false"/>
+  <Config Name="PAPERLESS_BASE_URL" Target="PAPERLESS_BASE_URL" Default="http://localhost:8000" Mode="" Description="URL of your paperless-ngx instance (e.g. http://paperless-ngx:8000)." Type="Variable" Display="always" Required="true" Mask="false"/>
+  <Config Name="PAPERLESS_API_TOKEN" Target="PAPERLESS_API_TOKEN" Default=" " Mode="" Description="API token for paperless-ngx. Generate one in paperless-ngx admin." Type="Variable" Display="always" Required="true" Mask="false"/>
+  <Config Name="PAPERLESS_PUBLIC_URL" Target="PAPERLESS_PUBLIC_URL" Default="" Mode="" Description="Public URL for Paperless (if different from PAPERLESS_BASE_URL)." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="MANUAL_TAG" Target="MANUAL_TAG" Default="paperless-gpt" Mode="" Description="Tag for manual processing." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="AUTO_TAG" Target="AUTO_TAG" Default="paperless-gpt-auto" Mode="" Description="Tag for auto processing." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="LLM_PROVIDER" Target="LLM_PROVIDER" Default="" Mode="" Description="AI backend (openai or ollama)." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="LLM_MODEL" Target="LLM_MODEL" Default="" Mode="" Description="AI model name, e.g. gpt-4o, gpt-3.5-turbo, deepseek-r1:8b." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="OPENAI_API_KEY" Target="OPENAI_API_KEY" Default="" Mode="" Description="OpenAI API key (required if using OpenAI)." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="OPENAI_BASE_URL" Target="OPENAI_BASE_URL" Default="" Mode="" Description="OpenAI base URL (optional, if using a custom OpenAI compatible service like LiteLLM)." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="LLM_LANGUAGE" Target="LLM_LANGUAGE" Default="English" Mode="" Description="Likely language for documents (e.g. English)." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="OLLAMA_HOST" Target="OLLAMA_HOST" Default="http://localhost:11434" Mode="" Description="Ollama server URL (e.g. http://host.docker.internal:11434)." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="OCR_PROVIDER" Target="OCR_PROVIDER" Default="llm" Mode="" Description="OCR provider to use (llm, azure, or google_docai)." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="VISION_LLM_PROVIDER" Target="VISION_LLM_PROVIDER" Default="openai" Mode="" Description="(for OCR) - openai or ollama" Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="VISION_LLM_MODEL" Target="VISION_LLM_MODEL" Default="gpt-4o" Mode="" Description="(for OCR) - minicpm-v (ollama example), gpt-4o (for openai), etc." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="AZURE_DOCAI_ENDPOINT" Target="AZURE_DOCAI_ENDPOINT" Default="" Mode="" Description="Azure Document Intelligence endpoint. Required if OCR_PROVIDER is azure." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="AZURE_DOCAI_KEY" Target="AZURE_DOCAI_KEY" Default="" Mode="" Description="Azure Document Intelligence API key. Required if OCR_PROVIDER is azure." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="AZURE_DOCAI_MODEL_ID" Target="AZURE_DOCAI_MODEL_ID" Default="prebuilt-read" Mode="" Description="Azure Document Intelligence model ID. Optional if using azure provider." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="AZURE_DOCAI_TIMEOUT_SECONDS" Target="AZURE_DOCAI_TIMEOUT_SECONDS" Default="120" Mode="" Description="Azure Document Intelligence timeout in seconds." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="GOOGLE_PROJECT_ID" Target="GOOGLE_PROJECT_ID" Default="" Mode="" Description="Google Cloud project ID. Required if OCR_PROVIDER is google_docai." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="GOOGLE_LOCATION" Target="GOOGLE_LOCATION" Default="" Mode="" Description="Google Cloud region (e.g. us, eu). Required if OCR_PROVIDER is google_docai." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="GOOGLE_PROCESSOR_ID" Target="GOOGLE_PROCESSOR_ID" Default="" Mode="" Description="Document AI processor ID. Required if OCR_PROVIDER is google_docai." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="GOOGLE_APPLICATION_CREDENTIALS" Target="GOOGLE_APPLICATION_CREDENTIALS" Default="" Mode="" Description="Path to the mounted Google service account key. Required if OCR_PROVIDER is google_docai." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="AUTO_OCR_TAG" Target="AUTO_OCR_TAG" Default="paperless-gpt-ocr-auto" Mode="" Description="Tag for automatically processing docs with OCR." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="LOG_LEVEL" Target="LOG_LEVEL" Default="info" Mode="" Description="Application log level (info, debug, warn, error)." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="AUTO_GENERATE_TITLE" Target="AUTO_GENERATE_TITLE" Default="true" Mode="" Description="Generate titles automatically if paperless-gpt-auto is used. Default: true." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="AUTO_GENERATE_TAGS" Target="AUTO_GENERATE_TAGS" Default="true" Mode="" Description="Generate tags automatically if paperless-gpt-auto is used. Default: true." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="AUTO_GENERATE_CORRESPONDENTS" Target="AUTO_GENERATE_CORRESPONDENTS" Default="true" Mode="" Description="Generate correspondents automatically if paperless-gpt-auto is used. Default: true." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="AUTO_GENERATE_CREATED_DATE" Target="AUTO_GENERATE_CREATED_DATE" Default="true" Mode="" Description="Generate the created dates automatically if paperless-gpt-auto is used." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="OCR_LIMIT_PAGES" Target="OCR_LIMIT_PAGES" Default="5" Mode="" Description="Limit the number of pages for OCR. Set to 0 for no limit." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="TOKEN_LIMIT" Target="TOKEN_LIMIT" Default="" Mode="" Description="Maximum tokens allowed for prompts/content. Set to 0 to disable limit. Useful for smaller LLMs." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="CORRESPONDENT_BLACK_LIST" Target="CORRESPONDENT_BLACK_LIST" Default="" Mode="" Description="A comma-separated list of names to exclude from the correspondents suggestions. Example: John Doe, Jane Smith." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <TailscaleStateDir/>
+  <Screenshot>https://raw.githubusercontent.com/icereed/paperless-gpt/refs/heads/main/paperless-gpt-screenshot.png</Screenshot>
+</Container>
