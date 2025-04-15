@@ -7,7 +7,7 @@
   <MyIP/>
   <Shell>sh</Shell>
   <Privileged>false</Privileged>
-  <Support>https://github.com/icereed/paperless-gpt/issues</Support>
+  <Support>https://forums.unraid.net/topic/189238-support-paperless-gpt/</Support>
   <Project>https://github.com/icereed/paperless-gpt</Project>
   <Overview>paperless-gpt seamlessly pairs with paperless-ngx to generate AI-powered document titles and tags, saving you hours of manual sorting. While other tools may offer AI chat features, paperless-gpt stands out by supercharging OCR with LLMs-ensuring high accuracy, even with tricky scans. If you&#x2019;re craving next-level text extraction and effortless document organization, this is your solution.&#xD;
 Description of container variables: https://github.com/icereed/paperless-gpt?tab=readme-ov-file#configuration</Overview>
