@@ -28,14 +28,18 @@ local ollama or AI cloud service (OpenAI, Google Document AI, Azure Document Int
   <Config Name="PAPERLESS_BASE_URL" Target="PAPERLESS_BASE_URL" Default="http://localhost:8000" Mode="" Description="URL of your paperless-ngx instance (e.g. http://paperless-ngx:8000)." Type="Variable" Display="always" Required="true" Mask="false"/>
   <Config Name="PAPERLESS_API_TOKEN" Target="PAPERLESS_API_TOKEN" Default=" " Mode="" Description="API token for paperless-ngx. Generate one in paperless-ngx admin." Type="Variable" Display="always" Required="true" Mask="false"/>
   <Config Name="PAPERLESS_PUBLIC_URL" Target="PAPERLESS_PUBLIC_URL" Default="" Mode="" Description="Public URL for Paperless (if different from PAPERLESS_BASE_URL)." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="User ID to run the container as. See Documentation (Running as a Non-Root User)." Type="Variable" Display="always" Required="true" Mask="false"/>
+  <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="Group ID to run the container as. See Documentation (Running as a Non-Root User)." Type="Variable" Display="always" Required="true" Mask="false"/>
   <Config Name="MANUAL_TAG" Target="MANUAL_TAG" Default="paperless-gpt" Mode="" Description="Tag for manual processing." Type="Variable" Display="always" Required="false" Mask="false"/>
   <Config Name="AUTO_TAG" Target="AUTO_TAG" Default="paperless-gpt-auto" Mode="" Description="Tag for auto processing." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="AUTO_TAG_COMPLETE" Target="AUTO_TAG_COMPLETE" Default="" Mode="" Description="Tag added to documents after auto-processing is complete. Only applied during auto-processing, not manual review. Set to an empty string to disable. When the variable is unset, the default tag (paperless-gpt-auto-complete) is used." Type="Variable" Display="always" Required="false" Mask="false"/>
   <Config Name="LLM_PROVIDER" Target="LLM_PROVIDER" Default="" Mode="" Description="AI backend (openai or ollama)." Type="Variable" Display="always" Required="false" Mask="false"/>
   <Config Name="LLM_MODEL" Target="LLM_MODEL" Default="" Mode="" Description="AI model name, e.g. gpt-4o, gpt-3.5-turbo, deepseek-r1:8b." Type="Variable" Display="always" Required="false" Mask="false"/>
   <Config Name="OPENAI_API_KEY" Target="OPENAI_API_KEY" Default="" Mode="" Description="OpenAI API key (required if using OpenAI)." Type="Variable" Display="always" Required="false" Mask="false"/>
   <Config Name="OPENAI_BASE_URL" Target="OPENAI_BASE_URL" Default="" Mode="" Description="OpenAI base URL (optional, if using a custom OpenAI compatible service like LiteLLM)." Type="Variable" Display="always" Required="false" Mask="false"/>
   <Config Name="LLM_LANGUAGE" Target="LLM_LANGUAGE" Default="English" Mode="" Description="Likely language for documents (e.g. English)." Type="Variable" Display="always" Required="false" Mask="false"/>
   <Config Name="OLLAMA_HOST" Target="OLLAMA_HOST" Default="http://localhost:11434" Mode="" Description="Ollama server URL (e.g. http://host.docker.internal:11434)." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="OLLAMA_THINK" Target="OLLAMA_THINK" Default="false" Mode="" Description="(Ollama only) Set to false to disable Ollama reasoning ('think') mode, true to force it on. Recommended false for thinking-mode models (e.g. Qwen 3, Gemma 3) on tasks that need strict output formats — with thinking left on, these models can spend the whole token budget reasoning and return empty content. If unset, the model's default applies." Type="Variable" Display="always" Required="false" Mask="false"/>
   <Config Name="OCR_PROVIDER" Target="OCR_PROVIDER" Default="llm" Mode="" Description="OCR provider to use (llm, azure, or google_docai)." Type="Variable" Display="always" Required="false" Mask="false"/>
   <Config Name="VISION_LLM_PROVIDER" Target="VISION_LLM_PROVIDER" Default="openai" Mode="" Description="(for OCR) - openai or ollama" Type="Variable" Display="always" Required="false" Mask="false"/>
   <Config Name="VISION_LLM_MODEL" Target="VISION_LLM_MODEL" Default="gpt-4o" Mode="" Description="(for OCR) - minicpm-v (ollama example), gpt-4o (for openai), etc." Type="Variable" Display="always" Required="false" Mask="false"/>
@@ -58,4 +62,11 @@ local ollama or AI cloud service (OpenAI, Google Document AI, Azure Document Int
   <Config Name="CORRESPONDENT_BLACK_LIST" Target="CORRESPONDENT_BLACK_LIST" Default="" Mode="" Description="A comma-separated list of names to exclude from the correspondents suggestions. Example: John Doe, Jane Smith." Type="Variable" Display="always" Required="false" Mask="false"/>
   <TailscaleStateDir/>
   <Screenshot>https://raw.githubusercontent.com/icereed/paperless-gpt/refs/heads/main/paperless-gpt-screenshot.png</Screenshot>
+  <Changes>
+### 2026-10-21
+- new variables for v0.26.0
+
+### 2025-03-25
+- Initial upload
+</Changes>
 </Container>
