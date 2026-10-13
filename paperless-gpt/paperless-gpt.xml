@@ -25,6 +25,8 @@ Description of container variables: https://github.com/icereed/paperless-gpt?tab
 local ollama or AI cloud service (OpenAI, Google Document AI, Azure Document Intelligence)</Requires>
   <Config Name="Web UI Port" Target="8080" Default="8080" Mode="tcp" Description="" Type="Port" Display="always" Required="true" Mask="false">8080</Config>
   <Config Name="Prompt Templates" Target="/app/prompts" Default="/mnt/user/appdata/paperless-gpt/prompts" Mode="rw" Description="Custom Prompt Templates&#13;&#10;https://github.com/icereed/paperless-gpt?tab=readme-ov-file#custom-prompt-templates" Type="Path" Display="always" Required="true" Mask="false"/>
+  <Config Name="Config Path" Target="/app/config" Default="/mnt/user/appdata/paperless-gpt/config" Mode="rw" Description="Path to config directory" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/paperless-gpt/config</Config>
+  <Config Name="DB Path" Target="/app/db" Default="/mnt/user/appdata/paperless-gpt/db" Mode="rw" Description="Path to db directory" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/paperless-gpt/db</Config>
   <Config Name="PAPERLESS_BASE_URL" Target="PAPERLESS_BASE_URL" Default="http://localhost:8000" Mode="" Description="URL of your paperless-ngx instance (e.g. http://paperless-ngx:8000)." Type="Variable" Display="always" Required="true" Mask="false"/>
   <Config Name="PAPERLESS_API_TOKEN" Target="PAPERLESS_API_TOKEN" Default=" " Mode="" Description="API token for paperless-ngx. Generate one in paperless-ngx admin." Type="Variable" Display="always" Required="true" Mask="false"/>
   <Config Name="PAPERLESS_PUBLIC_URL" Target="PAPERLESS_PUBLIC_URL" Default="" Mode="" Description="Public URL for Paperless (if different from PAPERLESS_BASE_URL)." Type="Variable" Display="always" Required="false" Mask="false"/>
@@ -63,7 +65,10 @@ local ollama or AI cloud service (OpenAI, Google Document AI, Azure Document Int
   <TailscaleStateDir/>
   <Screenshot>https://raw.githubusercontent.com/icereed/paperless-gpt/refs/heads/main/paperless-gpt-screenshot.png</Screenshot>
   <Changes>
-### 2026-10-21
+### 2026-10-13
+- new paths for v0.30.0
+
+### 2026-07-28
 - new variables for v0.26.0
 
 ### 2025-03-25
